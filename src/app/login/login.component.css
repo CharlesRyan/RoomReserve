@@ -1,0 +1,9 @@
+.login {
+	width: 20em;
+	height: 5em;
+}
+
+.login .buttonGrid .ui.header {
+	color: gainsboro;
+	text-shadow: 0 4px 4px #1d2832;
+}

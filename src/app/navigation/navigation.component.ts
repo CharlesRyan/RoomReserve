@@ -1,27 +1,37 @@
-import { Component } from "@angular/core";
-
-interface INavItem {
-	url:string;
-	text:string;
-}
-
-var navOne = {
-    url: "http://www.google.com",
-    text: 'Google'
-};
-var navTwo = {
-    url: "http://www.yahoo.com",
-    text: 'Yahoo'
-};
-var navThree = {
-    url: "http://www.bing.com",
-    text: 'Bing'
-};
+import { Component, OnInit } from "@angular/core";
+import { NavigationService, INavigationItem } from "./../services/navigation-service";
+import { RoomsService } from "./../services/rooms-service";
 
 @Component({
-    selector: "gw-nav",
-    templateUrl: "./navigation.html"
+	selector    : "gw-navigation",
+	templateUrl : "./navigation.html",
+	styleUrls   : ["./navigation.component.css"]
 })
-export class NavComponent { 
-    public navItems: INavItem[] = [navOne, navTwo, navThree];
- }
+export class NavigationComponent implements OnInit {
+	constructor(
+		public navigationService:NavigationService,
+		private roomsService:RoomsService
+	) { }
+
+	ngOnInit() {
+		const exercisesItem:INavigationItem = {
+			title : "Exercises",
+			url   : "/exercises",
+			color : "blue"
+		};
+
+		// add exercises link
+		this.navigationService.addNavigationItem(exercisesItem);
+
+			for (let room of this.roomsService.rooms) {
+				const roomItem:INavigationItem = {
+					title : room.name,
+					url   : `/rooms/${room.name}`,
+					color : "green"
+				};
+
+				// add rooms
+				this.navigationService.addNavigationItem(roomItem);
+			}
+	}
+}
