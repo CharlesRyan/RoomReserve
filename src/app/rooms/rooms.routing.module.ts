@@ -9,16 +9,21 @@ import { LoginGuard } from "./../services/login-guard.service";
 import { DirtyFormGuard } from "./../services/dirty-form-guard.service";
 
 const routes:Routes = [
-	{
+{
+		path: "rooms/:id",
+		redirectTo: 'rooms/:id/list',
+		pathMatch: "full"
+},
+{
 		path: "rooms/:id",
 		component: RoomsComponent,
-		canActivate: [ LoginGuard ],
+		canActivateChild: [ LoginGuard ],
 
 		children: [
 			{
 				path: "form",
 				component: RoomFormComponent,
-				canDeactivate: [ DirtyFormGuard ]
+				//canDeactivate: [ DirtyFormGuard ]
 			},
 			{
 				path: "list",

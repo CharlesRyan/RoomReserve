@@ -23,10 +23,10 @@ export class LoginService {
 		// perform a fake, synchronous login for the time being
 		this.loggedInUser = {
 			displayName: "Charles Ryan",
-			photoURL: "https://i0.wp.com/www.charlescryan.com/wp-content/uploads/2017/03/face.jpg"
+			photoURL: ""
 		};
 	}
-
+// https://i0.wp.com/www.charlescryan.com/wp-content/uploads/2017/03/face.jpg
 	public logout() {
 		this.loggedInUser = null;
 	}

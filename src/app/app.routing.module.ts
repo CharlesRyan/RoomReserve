@@ -10,7 +10,7 @@ import { DirtyFormGuard } from "./services/dirty-form-guard.service";
 const routes:Routes = [
     {
         path: "",
-        component: LoginComponent
+        component: ExercisesComponent
     },
     {
         path: "exercises",

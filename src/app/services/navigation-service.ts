@@ -12,7 +12,7 @@ export class NavigationService {
 		this.navigationItems.push(item);
 	}
 }
-
+ 
 export interface INavigationItem {
 	title: string,
 	url: string,

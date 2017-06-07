@@ -19,18 +19,16 @@ export class RoomsComponent implements OnInit {
 		console.log("ActivatedRoute snapshot", this.route.snapshot.params);
 
 		// get a snapshot
-		this.id = this.route.snapshot.params["id"];
+		// this.id = this.route.snapshot.params["id"];
 
-		console.log("Room ID is ", this.id, " via snapshot");
-
-		// deploy an observable
+		// observable
 		this.route.params
 			.map(params => {
-				console.log("Before map", params);
+				//console.log("Before map", params);
 				return params["id"];
 			})
 			.do(params => {
-				console.log("After map", params);
+				//console.log("After map", params);
 			})
 			.subscribe(id => {
 				this.id = id;

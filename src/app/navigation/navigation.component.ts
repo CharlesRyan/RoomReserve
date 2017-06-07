@@ -7,7 +7,7 @@ import { RoomsService } from "./../services/rooms-service";
 	templateUrl : "./navigation.html",
 	styleUrls   : ["./navigation.component.css"]
 })
-export class NavigationComponent implements OnInit {
+export class NavigationComponent implements OnInit { 
 	constructor(
 		public navigationService:NavigationService,
 		private roomsService:RoomsService
