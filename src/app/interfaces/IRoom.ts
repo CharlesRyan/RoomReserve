@@ -1,4 +1,8 @@
+import { IReservation } from "./IReservation";
+
 export interface IRoom {
-	name:string;
-	picture:string;
+	id: string,
+	name: string,
+	picture: string,
+	reservations? : IReservation[]
 }

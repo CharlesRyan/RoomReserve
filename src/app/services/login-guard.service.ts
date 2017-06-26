@@ -11,12 +11,18 @@ export class LoginGuard implements CanActivateChild {
 			) { }
 
 	canActivateChild() {
-		//router.navigate fragment route parameter
+		return this.loginService.getLoggedInUser().map(
+			loggedInUser => {
+				// console.log("Login Guard checking loggedInUser: ", loggedInUser);
 
-		if (Boolean(this.loginService.getLoggedInUser())) {
-			return true;
-		} else {
-			this.router.navigate([ "/" ], { fragment:"login-needed" })
-		};
+				if (loggedInUser) return true;
+
+				this.router.navigate([""], {
+					fragment: "login-needed"
+				});
+
+				return false;
+			} 
+		);
 	}
 }

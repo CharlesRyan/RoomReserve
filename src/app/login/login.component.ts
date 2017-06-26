@@ -1,32 +1,42 @@
 import { Component, OnInit } from '@angular/core';
-import { LoginService, IUser } from "./../services/login-service.service";
+import { Router } from "@angular/router";
+
+import { LoginService } from "./../services/login-service.service";
 
 @Component({
-	selector: 'gw-login',
-	templateUrl: './login.html',
-	styleUrls: ['./login.component.css']
+	selector: "gw-login",
+	templateUrl: "./login.html",
+	styleUrls: ["./login.component.css"]
 })
 export class LoginComponent implements OnInit {
-	public loggedInUser:IUser;
+	public loggedInUser;
 
-	constructor(private loginService:LoginService) { }
+	constructor(
+		private router:Router,
+		private loginService:LoginService
+	) { }
 
 	ngOnInit() {
-		this.init();
+		this.loginService.getLoggedInUser().subscribe({
+			next: loggedInUser => {
+				this.loggedInUser = loggedInUser;
+				// this._refreshRoute();
+			}
+		});
+	}
+
+	private _refreshRoute() {
+		const navigateToUrlCommand = [ this.router.url.startsWith("/room/") ? "" : this.router.url ];
+		this.router.navigate(navigateToUrlCommand);
 	}
 
 	login() {
 		this.loginService.login();
-		this.init();
 	}
 
 	logout() {
 		this.loginService.logout();
-		this.init();
-	}
-
-	private init() {
-		this.loggedInUser = this.loginService.getLoggedInUser();
-		console.log(this.loggedInUser, "fetched");
+		this._refreshRoute();
 	}
 }
+

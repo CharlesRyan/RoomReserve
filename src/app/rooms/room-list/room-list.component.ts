@@ -1,25 +1,48 @@
 import { Component, OnChanges, OnInit, Input, SimpleChange} from "@angular/core";
+import { ActivatedRoute } from "@angular/router";
+
+import { RoomsService } from "./../../services/rooms-service";
+
+import { IRoom } from "./../../interfaces/IRoom";
+import { IReservation } from "./../../interfaces/IReservation";
 
 @Component({
 	selector: "gw-room-list",
 	templateUrl: "./room-list.html",
 	//styleUrls: ["./room-list.component.css"]
 })
-export class RoomListComponent implements OnChanges, OnInit {
-	@Input() public id: number;
+export class RoomListComponent implements OnInit {
+	public id: number;
+	public room: IRoom;
+	public reservations: IReservation[];
 
-	// ActivatedRoute is provided by RouterModule
-	constructor() { }
+	constructor(
+		private route:ActivatedRoute,
+		private roomService:RoomsService) { }
 
-	ngOnInit() { }
-
-	ngOnChanges(changes:{ [propKey:string]:SimpleChange }) {
-		const previousValueOfId = changes.id.previousValue;
-		const currentValueOfId = changes.id.currentValue;
-
-		console.log("Previous value of id: " + previousValueOfId);
-		console.log("Current value of id: " + currentValueOfId);
-
-		this.id = currentValueOfId;
+	ngOnInit() {
+		this.route.parent.params
+			.map(params => params["id"])
+			.subscribe(id => {
+				this.id = id;
+				this.roomService.getRoomById(id).subscribe(room => {
+					this.room = room;
+					this.reservations = this.getReservationsByDay();
+				});
+			});
 	}
+
+	getReservationsByDay(date = null) {
+		if (!this.room.reservations) return [];
+
+		const reservations = this.room.reservations[this.roomService.getRoomDateKey(date)] || [];
+
+		// as seen elsewhere in this application, we'd like reservations to have ids and for this
+		// to be the unique key generated for us in Firebase
+		for (let reservationKey in reservations) {
+			reservations[reservationKey] = reservationKey;
+		}
+
+		return reservations;
+	};
 }

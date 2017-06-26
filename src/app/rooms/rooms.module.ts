@@ -1,15 +1,20 @@
 import { NgModule } from "@angular/core";
+import { CommonModule } from "@angular/common";
+import { FormsModule } from "@angular/forms";
 
-import { RoomsRoutingModule } from "./rooms.routing.module";
-import { routedComponents } from "./rooms.routes";
+import { RoomsRoutingModule, routedComponents } from "./rooms.routing.module";
 
-import { RoomHeaderComponent } from "./room-header/room-header.component";
-
-@NgModule({ 
-    imports: [ RoomsRoutingModule],
-    declarations: [ 
-        routedComponents,
-        RoomHeaderComponent     
-         ]
+@NgModule({
+	imports: [
+		CommonModule,
+		FormsModule,
+		RoomsRoutingModule
+	],
+	declarations: routedComponents
 })
-export class RoomsModule { }
+export default class RoomsModule { 
+
+	constructor() {
+	}
+
+}

@@ -1,9 +1,13 @@
 .login {
-	width: 20em;
-	height: 5em;
+	margin-top: 1em;
 }
 
-.login .buttonGrid .ui.header {
+.nameAndButtonDiv {
+	text-align: center;
+	float: right;
+}
+
+.login .ui.header {
 	color: gainsboro;
 	text-shadow: 0 4px 4px #1d2832;
 }
