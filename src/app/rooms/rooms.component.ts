@@ -32,15 +32,6 @@ import "rxjs/add/operator/do";
 				style({ opacity: 1, transform: "none" })
 			),
 			transition("init => loaded", animate("500ms 300ms cubic-bezier(0, 1, 0.5, 1)"))
-		]),
-		trigger("leftAfterOnLoad", [
-			state("init",
-				style({ opacity: 0, transform: "translate(30px,0)" })
-			),
-			state("loaded",
-				style({ opacity: 1, transform: "none" })
-			),
-			transition("init => loaded", animate("500ms 500ms cubic-bezier(0, 1, 0.5, 1)"))
 		])
 	]
 })

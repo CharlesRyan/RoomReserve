@@ -14,11 +14,13 @@ import { IReservation } from "./../../interfaces/IReservation";
 export class RoomListComponent implements OnInit {
 	public id: number;
 	public room: IRoom;
-	public reservations: IReservation[];
+	public reservations: IReservation[] = [];
+	public message;
 
 	constructor(
 		private route:ActivatedRoute,
-		private roomService:RoomsService) { }
+		private roomService:RoomsService
+	) { }
 
 	ngOnInit() {
 		this.route.parent.params
@@ -28,21 +30,32 @@ export class RoomListComponent implements OnInit {
 				this.roomService.getRoomById(id).subscribe(room => {
 					this.room = room;
 					this.reservations = this.getReservationsByDay();
+					this.setMessage();
 				});
 			});
 	}
 
 	getReservationsByDay(date = null) {
 		if (!this.room.reservations) return [];
+		// const reservations = this.room.reservations[this.roomService.getRoomDateKey(date)] || [];
 
-		const reservations = this.room.reservations[this.roomService.getRoomDateKey(date)] || [];
-
-		// as seen elsewhere in this application, we'd like reservations to have ids and for this
-		// to be the unique key generated for us in Firebase
+		var reservations = this.room.reservations;
+			
+		var reservationArr = [];
+		var iterable = 0;
 		for (let reservationKey in reservations) {
-			reservations[reservationKey] = reservationKey;
+			reservationArr[iterable] = reservations[reservationKey];
+			iterable ++;
 		}
-
-		return reservations;
+		return reservationArr;
 	};
+
+	setMessage() {
+		if (this.reservations.length === 1) {
+			this.message = "There is 1 reservation."
+		} else {
+			this.message = `There are ${this.reservations.length} reservations.`
+		}
+	}
+	
 }

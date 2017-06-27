@@ -2,6 +2,12 @@
 	<h1 class="ui inverted header">{{ room?.name }}</h1>
 	<div class="ui segment">
 		<button routerLink="../form" class="ui large right floated green button">Make One</button>
-		<p>There are {{ reservations?.length }} reservations today.</p>
+		<p>{{ message }}</p>
+		<div *ngFor="let reservation of reservations">
+			<hr/>
+			<div>{{reservation.date | date: 'MM/dd/yyyy'}}</div>
+			<div>Start: {{ reservation.startTime | readableTime }}</div>
+			<div>End: {{ reservation.endTime | readableTime }}</div>
+		</div>
 	</div>
 </div>

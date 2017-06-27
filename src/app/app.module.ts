@@ -23,10 +23,8 @@ import { RoomsService } from "./services/rooms-service";
 
 import { AppComponent } from "./app.component";
 import { NavigationComponent } from "./navigation/navigation.component";
-// import { ExerciseChildComponent } from './exercises/exercise-child/exercise-child.component';
 import { LoginComponent } from "./login/login.component";
 import { WelcomeComponent } from "./welcome/welcome.component";
-import { AsyncPatternsComponent } from './exercises/async-patterns/async-patterns.component';
 
 @NgModule({
     imports: [ 
@@ -45,7 +43,6 @@ import { AsyncPatternsComponent } from './exercises/async-patterns/async-pattern
         ],
     declarations: [ 
 		AppComponent,
-		AsyncPatternsComponent,
 		LoginComponent,
 		NavigationComponent,
 		routedComponents,

@@ -1,11 +1,8 @@
 import { NgModule } from "@angular/core";
 import { RouterModule, Routes, PreloadAllModules } from "@angular/router";
 
-import {ExercisesComponent} from "./exercises/exercises.component";
 import {LoginComponent} from "./login/login.component";
 import { WelcomeComponent } from "./welcome/welcome.component";
-
-import { CustomPreloading } from "./app.preloading";
 
 import { LoginGuard } from "./services/login-guard.service";
 import { DirtyFormGuard } from "./services/dirty-form-guard.service";
@@ -23,10 +20,6 @@ const routes: Routes = [
 		component: WelcomeComponent
 	},
 	{
-		path: "exercises",
-		component: ExercisesComponent
-	},
-	{
 		path: "rooms/:id",
 		loadChildren: "./rooms/rooms.module",
 		data: { preload: true }
@@ -40,15 +33,12 @@ const routes: Routes = [
 	}
 ];
 @NgModule({
-    imports : [ RouterModule.forRoot(routes, {
-		preloadingStrategy: CustomPreloading
-	}) ],
+    imports : [ RouterModule.forRoot(routes) ],
     exports: [ RouterModule ],
-	providers: [ LoginGuard, DirtyFormGuard, CustomPreloading ]
+	providers: [ LoginGuard, DirtyFormGuard]
 })
 export class AppRoutingModule {  }
 
 export const routedComponents = [
-    ExercisesComponent,
     LoginComponent
 ];

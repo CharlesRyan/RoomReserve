@@ -38,5 +38,6 @@ export class LoginComponent implements OnInit {
 		this.loginService.logout();
 		this._refreshRoute();
 	}
+	
 }
 

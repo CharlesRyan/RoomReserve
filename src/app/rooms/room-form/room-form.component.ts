@@ -50,7 +50,6 @@ export class RoomFormComponent implements OnChanges, OnInit, IDirtyCanDeactivate
 	 }
 
 	 ngAfterViewInit() {
-		 console.log(this.router.url);
 		// console.log(this.form);
 		//debounce
 	}
@@ -80,6 +79,7 @@ export class RoomFormComponent implements OnChanges, OnInit, IDirtyCanDeactivate
 
 	onRoomSubmission(form:NgForm){
 		this.roomsService.writeRoomReservation(this.id, form.value);
+		form.reset();
 		this.router.navigateByUrl(`/rooms/${this.id}/list`);
 	}
 }

@@ -5,7 +5,9 @@
 	<div class="ui padded grid">
 		<div class="row">
 			<div class="six wide computer only column" [@rightAfterOnLoad]="state">
+				<!--
 				<img class="ui medium centered image" [src]="pngPath">
+				-->
 			</div>
 			<div class="sixteen wide tablet ten wide computer column toggleButtons">
 				<div class="ui buttons">
@@ -19,7 +21,7 @@
 					        routerLinkActive="green">Form</button>
 				</div>
 				<hr />
-				<div [@leftAfterOnLoad]="state">	
+				<div>	
 					<router-outlet></router-outlet>
 				</div>
 			</div>

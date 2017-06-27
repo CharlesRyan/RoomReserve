@@ -49,34 +49,34 @@ export class RoomsService {
 
 	resetRoomsToDB() {
 		let roomRef = this.db.object('rooms');
-		roomRef.set({halo: {
-						id: "halo",
-						name: "Halo",
-						picture: "halo.jpg",
+		roomRef.set({north: {
+						id: "north",
+						name: "North Room",
+						picture: "",
 						reservations: ""
 					},
-					sonic: {
-						id: "sonic",
-						name: "Sonic",
-						picture: 'sonic.jpg',
+					west: {
+						id: "west",
+						name: "West Room",
+						picture: '',
 						reservations: ""
 					},
-					zelda: {
-						id: "zelda",
-						name: "Zelda",
-						picture: 'zelda.jpg',
+					east: {
+						id: "east",
+						name: "East Room",
+						picture: '',
 						reservations: ""
 					},
-					starfox: {
-						id: "starfox",
-						name: "Star Fox",
-						picture: 'starfox.jpg',
+					south: {
+						id: "south",
+						name: "South Room",
+						picture: '',
 						reservations: ""
 					},
-					simcity: {
-						id: "simcity",
-						name: "Sim City",
-						picture: 'simcity.jpg',
+					center: {
+						id: "center",
+						name: "Center Room",
+						picture: '',
 						reservations: ""
 					}
 				});
