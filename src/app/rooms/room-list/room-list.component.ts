@@ -9,7 +9,7 @@ import { IReservation } from "./../../interfaces/IReservation";
 @Component({
 	selector: "gw-room-list",
 	templateUrl: "./room-list.html",
-	//styleUrls: ["./room-list.component.css"]
+	styleUrls: ["./room-list.component.css"]
 })
 export class RoomListComponent implements OnInit {
 	public id: number;

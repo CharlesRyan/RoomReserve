@@ -65,7 +65,7 @@ export class RoomsComponent implements OnInit {
 				this.roomsService.getRoomById(id)
 					.subscribe(room => {
 						this.room = room;
-						this.pngPath = `assets/images/${room.id}.png`;
+						this.pngPath = `../../assets/images/${room.id}.png`;
 						this.state = "loaded";
 						// we need to set room picture (which comes from DB as a file name) to our relative path
 						this.room.picture = this.applicationSettings.getImagePath(this.room.picture);
