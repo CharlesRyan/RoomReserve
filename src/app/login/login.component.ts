@@ -17,12 +17,14 @@ export class LoginComponent implements OnInit {
 	) { }
 
 	ngOnInit() {
-		this.loginService.getLoggedInUser().subscribe({
+		this.loginService.getLoggedInUser()
+		.subscribe({
 			next: loggedInUser => {
 				this.loggedInUser = loggedInUser;
 				// this._refreshRoute();
 			}
 		});
+
 	}
 
 	private _refreshRoute() {

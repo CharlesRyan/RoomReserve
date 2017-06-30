@@ -11,6 +11,7 @@ import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { AngularFireModule } from "angularfire2";
 import { AngularFireAuthModule } from "angularfire2/auth";
 import { AngularFireDatabaseModule } from 'angularfire2/database';
+import { FacebookModule } from 'ngx-facebook';
 
 import { environment } from "./../environments/environment";
 
@@ -37,6 +38,7 @@ import { WelcomeComponent } from "./welcome/welcome.component";
 		AngularFireAuthModule,
 		AngularFireDatabaseModule,
 		ReactiveFormsModule,
+		FacebookModule.forRoot(),
 
 		// our modules
 		AppRoutingModule

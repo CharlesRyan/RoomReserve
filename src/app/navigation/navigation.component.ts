@@ -4,6 +4,7 @@ import { INavigationItem } from "./../interfaces/INavigationItem";
 
 import { NavigationService } from "./../services/navigation-service";
 import { RoomsService } from "./../services/rooms-service";
+import { LoginService } from "./../services/login-service.service";
 
 
 @Component({
@@ -14,7 +15,8 @@ import { RoomsService } from "./../services/rooms-service";
 export class NavigationComponent implements OnInit {
 	constructor(
 		public navigationService: NavigationService,
-		public roomService: RoomsService
+		public roomService: RoomsService,
+		public loginService: LoginService
 	) { }
 
 	ngOnInit() {
@@ -45,5 +47,7 @@ export class NavigationComponent implements OnInit {
 				this.navigationService.addNavigationItem(roomItem);
 			}
 		});
+
+		
 	}
 }
