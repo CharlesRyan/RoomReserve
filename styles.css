@@ -1,0 +1,12 @@
+body {
+	background-color: black;
+	font-family: Arial, sans-serif;
+}
+
+input.ng-invalid, select.ng-invalid {
+	background-color: lightcoral !important;
+}
+
+.ui.button {
+	color: gray;
+}
